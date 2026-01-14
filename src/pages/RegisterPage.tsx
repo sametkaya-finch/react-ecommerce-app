@@ -1,4 +1,3 @@
-import React from 'react'
 import "../css/RegisterPage.css"
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -20,16 +19,19 @@ function RegisterPage() {
     const submit = async (values: any, actions: any) => {
         try {
             const payload: UserType = {
+                id: String(Math.floor(Math.random() * 999999)),
                 username: values.username,
-                password: values.password
+                password: values.password,
+                balance: 1000
             }
+
             const response = await RegisterPageService.register(payload)
             if (response) {
                 toast.success("Registration successful.")
                 navigate("/login");
             }
         } catch (error) {
-            toast.error("An error occurred during the registration process.")
+            toast.error("An error occurred during the registration process." + error);
         }
     }
 
@@ -41,9 +43,6 @@ function RegisterPage() {
         onSubmit: submit,
         validationSchema: RegisterPageSchema
     });
-
-
-
 
     return (
         <div className='register'>
@@ -91,10 +90,8 @@ function RegisterPage() {
                         <Button type='submit' variant="contained" color="primary" fullWidth>Register</Button>
 
                     </div>
-
                 </form>
             </div>
-
         </div>
     )
 }

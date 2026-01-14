@@ -1,19 +1,22 @@
 {
   "users": [
     {
+      "id": "180985",
       "username": "sametkaya",
       "password": "1",
-      "id": "9751"
+      "balance": 1000
     },
     {
-      "id": "eeff",
+      "id": "596678",
       "username": "sefametin",
-      "password": "2"
+      "password": "1",
+      "balance": 1000
     },
     {
-      "id": "8dc8",
+      "id": "846945",
       "username": "sudeacikose",
-      "password": "3"
+      "password": "1",
+      "balance": 1000
     }
   ]
 }
