@@ -13,8 +13,8 @@ function ProductCard(props: ProductCardProps) {
 
     return (
         <Card className='productcards'>
-            <img src={image} width={250} height={250} />
-            <CardContent sx={{ height: '200px' }}>
+            <img src={image} width={230} height={230} />
+            <CardContent sx={{ height: '250px' }}>
                 <Typography gutterBottom variant="h5" component="div">
                     {title.substring(0, 60)}
                 </Typography>

@@ -4,11 +4,12 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 5px;
 }
 
 .productcards.productcards {
-    width: 330px;
-    height: 580px;
+    width: 350px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,4 +22,12 @@
 .price {
     font-family: Arial;
     color: green;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
 }

@@ -1,24 +1,27 @@
 import axios, { type AxiosResponse } from "axios";
 import type { ProductType } from "../types/Types";
 
-class ProductService {
+
+class CategoryService {
 
     BASE_URL = "https://fakestoreapi.com";
 
-    getAllProducts(): Promise<ProductType[]> {
+    getAllCategories(): Promise<string[]> {
         return new Promise((resolve: any, reject: any) => {
-            axios.get(`${this.BASE_URL}/products`)
+            axios.get(`${this.BASE_URL}/products/categories`)
                 .then((response: AxiosResponse<any, any>) => resolve(response.data))
                 .catch((error: any) => reject(error));
         })
     }
 
-    getProductById(productId: number): Promise<ProductType> {
+    getProductsByCategoryName(categoryName: string): Promise<ProductType[]> {
         return new Promise((resolve: any, reject: any) => {
-            axios.get(`${this.BASE_URL}/products/${productId}`)
+            axios.get(`${this.BASE_URL}/products/category/${categoryName}`)
                 .then((response: AxiosResponse<any, any>) => resolve(response.data))
                 .catch((error: any) => reject(error));
         })
     }
+
 }
-export default new ProductService();
+
+export default new CategoryService();
