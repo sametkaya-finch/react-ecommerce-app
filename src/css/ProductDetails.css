@@ -1,0 +1,55 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 60px;
+}
+
+.image {
+    width: 250px;
+    height: 400px;
+}
+
+.description-main {
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.description {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-top: 25px;
+    height: 100px;
+}
+
+.price {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.increase {
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.decrease {
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.count {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}

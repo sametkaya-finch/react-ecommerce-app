@@ -1,6 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { AppSlicepType, ProductType, UserType } from '../types/Types'
-import { act } from 'react';
 
 const initialState: AppSlicepType = {
     currentUser: null,
@@ -21,12 +20,21 @@ const AppSlice = createSlice({
         },
         setProducts: (state: AppSlicepType, action: PayloadAction<ProductType[]>) => {
             state.products = action.payload;
+        },
+        filetProducts: (state: AppSlicepType, action: PayloadAction<string>) => {
+            const tempList: ProductType[] = [];
+            state.products.map((product: ProductType) => {
+                if (product.title.toLowerCase().includes(action.payload.toLowerCase())) {
+                    tempList.push(product);
+                }
+            })
+            state.products = [...tempList];
         }
 
     }
 
 })
 
-export const { setLoading, setCurrentUser, setProducts } = AppSlice.actions
+export const { setLoading, setCurrentUser, setProducts, filetProducts } = AppSlice.actions
 
 export default AppSlice.reducer
