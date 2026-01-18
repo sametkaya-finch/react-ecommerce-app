@@ -7,13 +7,14 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Typography from '@mui/material/Typography';
 import logo from '../images/logo.png'
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { filetProducts, setCurrentUser, setProducts } from '../redux/AppSlice';
 import { toast } from 'react-toastify';
 import type { ProductType } from '../types/Types';
 import ProductService from '../services/ProductService';
 import { CiShoppingBasket } from "react-icons/ci";
 import Badge from '@mui/material/Badge';
+import type { RootState } from '../redux/Store';
 
 
 
@@ -21,6 +22,7 @@ function Navbar() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { basket } = useSelector((state: RootState) => state.basket);
 
     const logout = () => {
         localStorage.removeItem("currentUser");
@@ -81,7 +83,7 @@ function Navbar() {
                         variant="standard"
                     />
 
-                    <Badge badgeContent={4} color="success" sx={{ margin: '0px 15px' }}>
+                    <Badge badgeContent={basket.length} color="success" sx={{ margin: '0px 15px' }}>
                         <CiShoppingBasket style={{ fontSize: '25px', cursor: 'pointer' }} />
                     </Badge>
 

@@ -23,8 +23,8 @@ export interface ProductType {
     description: string,
     category: string,
     image: string,
+    count?: number,
     rating: RatingType
-
 }
 
 export interface RatingType {
@@ -36,4 +36,7 @@ export interface ProductCardProps {
     product: ProductType
 }
 
+export interface BasketSliceType {
+    basket: ProductType[]
+}
 

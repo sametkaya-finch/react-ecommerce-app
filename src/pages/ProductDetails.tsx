@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import type { ProductType } from '../types/Types';
 import '../css/ProductDetails.css'
 import Button from '@mui/material/Button';
+import { addProductToBasket } from '../redux/BasketSlice';
 
 function ProductDetails() {
 
@@ -25,6 +26,16 @@ function ProductDetails() {
             toast.error("Product details could not be loaded." + error);
         } finally {
             dispatch(setLoading(false));
+        }
+    }
+
+    const addBasket = () => {
+        if (product) {
+            const payload: ProductType = {
+                ...product,
+                count: count
+            }
+            dispatch(addProductToBasket(payload));
         }
     }
 
@@ -53,7 +64,7 @@ function ProductDetails() {
                                 <span className='decrease' onClick={() => setCount(count - 1)}> - </span>
                             </div>
                             <div>
-                                <Button color='info' variant='contained' size='small' sx={{ marginTop: '20px' }}> Add to Cart </Button>
+                                <Button onClick={addBasket} color='info' variant='contained' size='small' sx={{ marginTop: '20px' }}> Add to Cart </Button>
                             </div>
                         </div>
                     </div>
