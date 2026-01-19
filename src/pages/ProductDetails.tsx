@@ -36,6 +36,7 @@ function ProductDetails() {
                 count: count
             }
             dispatch(addProductToBasket(payload));
+            toast.success("Product added to cart")
         }
     }
 

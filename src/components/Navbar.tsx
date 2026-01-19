@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import logo from '../images/logo.png'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { filetProducts, setCurrentUser, setProducts } from '../redux/AppSlice';
+import { filetProducts, setCurrentUser, setDrawer, setProducts } from '../redux/AppSlice';
 import { toast } from 'react-toastify';
 import type { ProductType } from '../types/Types';
 import ProductService from '../services/ProductService';
@@ -43,6 +43,10 @@ function Navbar() {
             toast.error("An error occurred while filtering." + error);
 
         }
+    }
+
+    const openDrawer = () => {
+        dispatch(setDrawer(true));
     }
 
     return (
@@ -83,7 +87,7 @@ function Navbar() {
                         variant="standard"
                     />
 
-                    <Badge badgeContent={basket.length} color="success" sx={{ margin: '0px 15px' }}>
+                    <Badge onClick={openDrawer} badgeContent={basket.length} color="success" sx={{ margin: '0px 15px', cursor: 'pointer' }}>
                         <CiShoppingBasket style={{ fontSize: '25px', cursor: 'pointer' }} />
                     </Badge>
 

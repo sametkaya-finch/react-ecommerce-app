@@ -2,7 +2,8 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { BasketSliceType, ProductType } from '../types/Types'
 
 const initialState: BasketSliceType = {
-    basket: []
+    basket: [],
+    totalAmount: 0
 }
 
 const BasketSlice = createSlice({
@@ -32,11 +33,24 @@ const BasketSlice = createSlice({
             }
 
             localStorage.setItem("basket", JSON.stringify(state.basket));
+        },
+        calculateBasket: (state: BasketSliceType) => {
+            let totalAmount: number = 0;
+            state.basket && state.basket.map((product: ProductType) => {
+                if (product.count) {
+                    totalAmount += product.price * product.count;
+                }
+            })
+            state.totalAmount = totalAmount;
+        },
+        removeProductFromBasket: (state: BasketSliceType, action: PayloadAction<number>) => {
+            state.basket = [...state.basket.filter((product: ProductType) => product.id !== action.payload)];
+            localStorage.setItem("basket", JSON.stringify(state.basket));
         }
     }
 })
 
 
-export const { addProductToBasket, setBasket } = BasketSlice.actions
+export const { addProductToBasket, setBasket, calculateBasket, removeProductFromBasket } = BasketSlice.actions
 
 export default BasketSlice.reducer

@@ -9,6 +9,7 @@ export interface AppSlicepType {
     currentUser: UserType | null,
     loading: boolean,
     products: ProductType[]
+    drawer: boolean
 }
 
 export interface CheckUserType {
@@ -38,5 +39,6 @@ export interface ProductCardProps {
 
 export interface BasketSliceType {
     basket: ProductType[]
+    totalAmount: number
 }
 

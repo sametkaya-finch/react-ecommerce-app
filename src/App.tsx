@@ -11,6 +11,7 @@ import ProductService from './services/ProductService';
 import { setCurrentUser, setProducts } from './redux/AppSlice';
 import { useEffect } from 'react';
 import { setBasket } from './redux/BasketSlice';
+import BasketDetails from './components/BasketDetails';
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
       <RouterCongif />
       <ToastContainer autoClose={2500} />
       <Spinner />
+      <BasketDetails />
     </div>
 
 
